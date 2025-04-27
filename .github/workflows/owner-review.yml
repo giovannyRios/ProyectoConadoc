@@ -1,0 +1,46 @@
+name: owner-review           # ← nombre que verás en la pestaña Checks
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, edited, submitted]   # se dispara cada vez que puede cambiar la aprobación
+
+permissions:                 # token mínimo para consultar el PR
+  pull-requests: read
+  contents: read
+
+jobs:
+  verify_owner_approval:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Instala jq (JSON parser)
+        run: sudo apt-get update -y && sudo apt-get install -y jq
+
+      - name: Obtiene revisiones del PR
+        id: reviews
+        env:
+          GH_TOKEN: ${{ github.token }}            # token automático de la acción
+        run: |
+          # Llama a la API para traer TODAS las reviews
+          curl -s -H "Authorization: Bearer $GH_TOKEN" \
+               -H "Accept: application/vnd.github+json" \
+               "${{ github.api_url }}/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/reviews" \
+               > reviews.json
+
+          # Filtra las que están en estado APPROVED
+          last_approver=$(jq -r '[.[] | select(.state=="APPROVED")] | last | .user.login // ""' reviews.json)
+
+          echo "LAST_APPROVER=$last_approver" | tee -a $GITHUB_ENV
+          echo "Última aprobación por: $last_approver"
+
+      - name: Valida que el aprobador seas tú
+        env:
+          OWNER: ${{ github.repository_owner }}    # dueñ@ del repo
+        run: |
+          if [ -z "$LAST_APPROVER" ]; then
+            echo "::error::No hay aprobaciones."
+            exit 1
+          fi
+          if [ "$LAST_APPROVER" != "$OWNER" ]; then
+            echo "::error::La última aprobación es de $LAST_APPROVER y debe ser de $OWNER."
+            exit 1
+          fi
+          echo "✅  Validación superada: la última aprobación es de $OWNER"
