@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { BenefitsComponent } from '../benefits/benefits.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ CommonModule ],
+  imports: [ CommonModule, BenefitsComponent ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
@@ -17,3 +18,4 @@ export class HomeComponent {
     de tu flotilla con tecnología de punta.
   `;
 }
+
