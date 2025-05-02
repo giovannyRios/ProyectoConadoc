@@ -1,0 +1,492 @@
+<mat-card class="form-card" appearance="outlined">
+    <mat-card-title>Solicitud de Asociación y/o Actualización de Datos</mat-card-title>
+    <mat-divider></mat-divider>
+
+    <form [formGroup]="requestForm" (ngSubmit)="onSubmit()" class="form-grid">
+
+        <!-- === DATOS PERSONALES === -->
+        <h2>Datos Personales</h2>
+
+        <div class="grid-1">
+            <mat-form-field>
+                <mat-label>Apellidos y Nombres completos</mat-label>
+                <input matInput formControlName="nombresCompletos" required />
+            </mat-form-field>
+        </div>
+
+        <div class="grid-3">
+            <mat-form-field>
+                <mat-label>Cédula N°</mat-label>
+                <input matInput formControlName="cedula" required />
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>De (lugar de expedición)</mat-label>
+                <input matInput formControlName="lugarExpedicion" required />
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Fecha de expedición</mat-label>
+                <input matInput [matDatepicker]="expPicker" formControlName="fechaExpedicion" required />
+                <mat-datepicker-toggle matSuffix [for]="expPicker"></mat-datepicker-toggle>
+                <mat-datepicker #expPicker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <div class="grid-3">
+            <mat-form-field>
+                <mat-label>Estado civil</mat-label>
+                <mat-select formControlName="estadoCivil" required>
+                    <mat-option value="soltero">Soltero</mat-option>
+                    <mat-option value="casado">Casado</mat-option>
+                    <mat-option value="union">Unión libre</mat-option>
+                    <mat-option value="divorciado">Divorciado</mat-option>
+                    <mat-option value="viudo">Viudo</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-radio-group formControlName="genero" class="flex-center">
+                <label>Género:</label>
+                <mat-radio-button value="F">F</mat-radio-button>
+                <mat-radio-button value="M">M</mat-radio-button>
+            </mat-radio-group>
+
+            <mat-radio-group formControlName="cabezaFamilia" class="flex-center">
+                <label>Madre/Padre cabeza de familia:</label>
+                <mat-radio-button [value]="true">Sí</mat-radio-button>
+                <mat-radio-button [value]="false">No</mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+        <div class="grid-2">
+            <mat-form-field>
+                <mat-label>Fecha de nacimiento</mat-label>
+                <input matInput [matDatepicker]="fnPicker" formControlName="fechaNacimiento" required />
+                <mat-datepicker-toggle matSuffix [for]="fnPicker"></mat-datepicker-toggle>
+                <mat-datepicker #fnPicker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Lugar de nacimiento</mat-label>
+                <input matInput formControlName="lugarNacimiento" required />
+            </mat-form-field>
+        </div>
+
+        <div class="grid-3">
+            <mat-form-field>
+                <mat-label>Dirección domicilio</mat-label>
+                <input matInput formControlName="direccion" required />
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Estrato</mat-label>
+                <input matInput type="number" formControlName="estrato" required />
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Personas a cargo</mat-label>
+                <input matInput type="number" formControlName="personasCargo" required />
+            </mat-form-field>
+        </div>
+
+        <div class="grid-3">
+            <mat-form-field>
+                <mat-label>Barrio</mat-label>
+                <input matInput formControlName="barrio" required />
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Municipio</mat-label>
+                <input matInput formControlName="municipio" required />
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Departamento</mat-label>
+                <input matInput formControlName="departamento" required />
+            </mat-form-field>
+        </div>
+
+        <div class="grid-3">
+            <mat-form-field>
+                <mat-label>Correo electrónico</mat-label>
+                <input matInput type="email" formControlName="email" required />
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Teléfono</mat-label>
+                <input matInput formControlName="telefono" required />
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Celular</mat-label>
+                <input matInput formControlName="celular" required />
+            </mat-form-field>
+        </div>
+
+        <div class="grid-1">
+            <label>Nivel Escolar</label>
+            <mat-radio-group formControlName="nivelEscolar">
+                <mat-radio-button value="secundaria">Secundaria</mat-radio-button>
+                <mat-radio-button value="tecnico">Técnico</mat-radio-button>
+                <mat-radio-button value="tecnologo">Tecnólogo</mat-radio-button>
+                <mat-radio-button value="universitario">Universitario</mat-radio-button>
+                <mat-radio-button value="especializacion">Especialización</mat-radio-button>
+                <mat-radio-button value="maestria">Maestría</mat-radio-button>
+                <mat-radio-button value="doctorado">Doctorado</mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+
+        <!-- === DATOS DEL CÓNYUGE === -->
+        <h2>Datos del Cónyuge</h2>
+
+        <div class="grid-1">
+            <mat-form-field>
+                <mat-label>Apellidos y Nombres completos del Cónyuge</mat-label>
+                <input matInput formControlName="conyugeNombre" />
+            </mat-form-field>
+        </div>
+
+        <div class="grid-3">
+            <mat-form-field>
+                <mat-label>Cédula N° del Cónyuge</mat-label>
+                <input matInput formControlName="conyugeCedula" />
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Fecha de nacimiento Cónyuge</mat-label>
+                <input matInput [matDatepicker]="cnPicker" formControlName="conyugeFechaNacimiento" />
+                <mat-datepicker-toggle matSuffix [for]="cnPicker"></mat-datepicker-toggle>
+                <mat-datepicker #cnPicker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Ocupación Cónyuge</mat-label>
+                <mat-select formControlName="conyugeOcupacion">
+                    <mat-option value="empleado">Empleado</mat-option>
+                    <mat-option value="independiente">Independiente</mat-option>
+                    <mat-option value="otro">Otro</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+
+        <!-- === SITUACIÓN LABORAL DOCENTE === -->
+        <h2>Situación Laboral Docente</h2>
+
+        <div class="grid-3 flex-center">
+            <mat-checkbox formControlName="docenteActivo">Activo</mat-checkbox>
+            <mat-checkbox formControlName="docentePensionado">Pensionado</mat-checkbox>
+            <mat-checkbox formControlName="docenteRetirado">Retirado</mat-checkbox>
+        </div>
+
+        <div class="grid-3">
+            <mat-form-field>
+                <mat-label>Fecha nombramiento en propiedad</mat-label>
+                <input matInput [matDatepicker]="nomPicker" formControlName="fechaNombramiento" />
+                <mat-datepicker-toggle matSuffix [for]="nomPicker"></mat-datepicker-toggle>
+                <mat-datepicker #nomPicker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Escalafón</mat-label>
+                <mat-select formControlName="escalafon">
+                    <mat-option value="2277">Decreto 2277</mat-option>
+                    <mat-option value="1278">Decreto 1278</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Jornada</mat-label>
+                <mat-select formControlName="jornada">
+                    <mat-option value="manana">Mañana</mat-option>
+                    <mat-option value="tarde">Tarde</mat-option>
+                    <mat-option value="noche">Noche</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="grid-2">
+            <mat-form-field>
+                <mat-label>Cargo</mat-label>
+                <input matInput formControlName="cargoDocente" />
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Institución educativa</mat-label>
+                <input matInput formControlName="institucion" />
+            </mat-form-field>
+        </div>
+
+        <div class="grid-2">
+            <mat-form-field>
+                <mat-label>Teléfono Institución</mat-label>
+                <input matInput formControlName="institucionTelefono" />
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Localidad</mat-label>
+                <input matInput formControlName="localidad" />
+            </mat-form-field>
+        </div>
+
+
+        <!-- === SITUACIÓN LABORAL NO DOCENTE === -->
+        <h2>Situación Laboral No Docente</h2>
+
+        <div class="grid-3">
+            <mat-form-field>
+                <mat-label>Empresa en la que trabaja</mat-label>
+                <input matInput formControlName="empresa" />
+            </mat-form-field>
+
+            <mat-radio-group formControlName="empleado">
+                <label>Empleado:</label>
+                <mat-radio-button [value]="true">Sí</mat-radio-button>
+                <mat-radio-button [value]="false">No</mat-radio-button>
+            </mat-radio-group>
+
+            <mat-form-field>
+                <mat-label>Cargo</mat-label>
+                <input matInput formControlName="cargoNoDocente" />
+            </mat-form-field>
+        </div>
+
+        <div class="grid-2">
+            <mat-form-field>
+                <mat-label>Dirección</mat-label>
+                <input matInput formControlName="direccionEmpresa" />
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Teléfono</mat-label>
+                <input matInput formControlName="telefonoEmpresa" />
+            </mat-form-field>
+        </div>
+
+        <div class="grid-1">
+            <mat-form-field>
+                <mat-label>Tipo de contrato</mat-label>
+                <input matInput formControlName="tipoContrato" />
+            </mat-form-field>
+        </div>
+
+
+        <!-- === INFORMACIÓN ECONÓMICA === -->
+        <h2>Información Económica</h2>
+
+        <div class="grid-2">
+            <mat-form-field>
+                <mat-label>Ingresos mensuales ($)</mat-label>
+                <input matInput formControlName="ingresos" />
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Egresos mensuales ($)</mat-label>
+                <input matInput formControlName="egresos" />
+            </mat-form-field>
+        </div>
+
+        <div class="grid-2">
+            <mat-form-field>
+                <mat-label>Total activos ($)</mat-label>
+                <input matInput formControlName="activos" />
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Total pasivos ($)</mat-label>
+                <input matInput formControlName="pasivos" />
+            </mat-form-field>
+        </div>
+
+        <div class="grid-1">
+            <label>Otras Entidades Cooperativas donde es Asociado(a):</label>
+            <div class="grid-5">
+                <mat-form-field><mat-label>a.</mat-label><input matInput formControlName="coopA" /></mat-form-field>
+                <mat-form-field><mat-label>b.</mat-label><input matInput formControlName="coopB" /></mat-form-field>
+                <mat-form-field><mat-label>c.</mat-label><input matInput formControlName="coopC" /></mat-form-field>
+                <mat-form-field><mat-label>d.</mat-label><input matInput formControlName="coopD" /></mat-form-field>
+                <mat-form-field><mat-label>e.</mat-label><input matInput formControlName="coopE" /></mat-form-field>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <mat-form-field>
+                <mat-label>Valor de aporte mensual ($)</mat-label>
+                <input matInput formControlName="aporteMensual" required />
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Entidad Pagadora</mat-label>
+                <input matInput formControlName="entidadPagadora" />
+            </mat-form-field>
+        </div>
+
+
+        <!-- === REFERENCIAS === -->
+        <h2>Referencias</h2>
+
+        <h3>Familiar</h3>
+        <div class="grid-2">
+            <mat-form-field>
+                <mat-label>Apellidos y Nombres</mat-label>
+                <input matInput formControlName="refFamiliarNombre" />
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Dirección</mat-label>
+                <input matInput formControlName="refFamiliarDireccion" />
+            </mat-form-field>
+        </div>
+        <div class="grid-2">
+            <mat-form-field>
+                <mat-label>Teléfono</mat-label>
+                <input matInput formControlName="refFamiliarTelefono" />
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Celular</mat-label>
+                <input matInput formControlName="refFamiliarCelular" />
+            </mat-form-field>
+        </div>
+
+        <h3>Personal</h3>
+        <div class="grid-2">
+            <mat-form-field>
+                <mat-label>Apellidos y Nombres</mat-label>
+                <input matInput formControlName="refPersonalNombre" />
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Dirección</mat-label>
+                <input matInput formControlName="refPersonalDireccion" />
+            </mat-form-field>
+        </div>
+        <div class="grid-2">
+            <mat-form-field>
+                <mat-label>Teléfono</mat-label>
+                <input matInput formControlName="refPersonalTelefono" />
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Celular</mat-label>
+                <input matInput formControlName="refPersonalCelular" />
+            </mat-form-field>
+        </div>
+
+
+        <!-- === GRUPO FAMILIAR === -->
+        <h2>Grupo Familiar</h2>
+        <button mat-raised-button color="primary" type="button" (click)="addFamiliar()">
+            <mat-icon>person_add</mat-icon> Añadir familiar
+        </button>
+
+        <div formArrayName="grupoFamiliar" class="familiar-list">
+            <div *ngFor="let fam of familiares.controls; let i = index" [formGroupName]="i"
+                class="grid-6 familiar-item">
+                <mat-form-field>
+                    <mat-label>Apellidos y Nombres</mat-label>
+                    <input matInput formControlName="nombre" required />
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Identificación</mat-label>
+                    <input matInput formControlName="identificacion" required />
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Fecha de nacimiento</mat-label>
+                    <input matInput [matDatepicker]="gfPicker" formControlName="fechaNacimiento" required />
+                    <mat-datepicker-toggle matSuffix [for]="gfPicker"></mat-datepicker-toggle>
+                    <mat-datepicker #gfPicker></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Estado civil</mat-label>
+                    <input matInput formControlName="estadoCivil" />
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Parentesco</mat-label>
+                    <input matInput formControlName="parentesco" />
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Nivel educativo</mat-label>
+                    <input matInput formControlName="nivelEducativo" />
+                </mat-form-field>
+
+                <button mat-icon-button color="warn" (click)="removeFamiliar(i)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+        </div>
+
+
+
+        <!-- === INFORMACIÓN GENERAL === -->
+        <h2>Información General</h2>
+        <div class="grid-2">
+            <label>¿Ha recibido capacitación en el sector cooperativo?</label>
+            <mat-radio-group formControlName="capacitacionCooperativa">
+                <mat-radio-button value="si">Sí</mat-radio-button>
+                <mat-radio-button value="no">No</mat-radio-button>
+            </mat-radio-group>
+            <mat-form-field>
+                <mat-label>¿Qué nivel?</mat-label>
+                <input matInput formControlName="nivelCapacitacion" />
+            </mat-form-field>
+        </div>
+
+        <div class="grid-2">
+            <mat-form-field>
+                <mat-label>¿A través de qué medio conoció a Coonadoc?</mat-label>
+                <mat-select formControlName="medioConocio">
+                    <mat-option value="familiar">Familiar</mat-option>
+                    <mat-option value="docente">Compañero Docente</mat-option>
+                    <mat-option value="otros">Otros</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Nombre del Asociado que me vincula</mat-label>
+                <input matInput formControlName="asociadoVincula" />
+            </mat-form-field>
+        </div>
+
+        <div class="grid-2">
+            <mat-radio-group formControlName="tieneParentesco">
+                <label>¿Tiene parentesco con directivo/funcionario?</label>
+                <mat-radio-button [value]="true">Sí</mat-radio-button>
+                <mat-radio-button [value]="false">No</mat-radio-button>
+            </mat-radio-group>
+            <mat-form-field>
+                <mat-label>Parentesco</mat-label>
+                <input matInput formControlName="parentescoDirectivo" />
+            </mat-form-field>
+        </div>
+
+        <div class="grid-2">
+            <mat-form-field>
+                <mat-label>Nombre del directivo/funcionario</mat-label>
+                <input matInput formControlName="nombreDirectivo" />
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Cargo</mat-label>
+                <input matInput formControlName="cargoDirectivo" />
+            </mat-form-field>
+        </div>
+
+
+        <!-- === AUTORIZACIONES Y DECLARACIONES === -->
+        <h2>Autorizaciones y Declaraciones</h2>
+        <div class="autorizaciones">
+            <p>Autorizo a COONADOC para consultar y reportar en centrales de riesgo según los literales A) a D)
+                descritos en el formulario.</p>
+            <p>Autorizo el tratamiento de mis datos personales conforme a la normativa vigente.</p>
+            <p>Certifico que la información suministrada es veraz y actual.</p>
+            <p>Declaración de origen de fondos y compromiso de actualización anual.</p>
+        </div>
+        <mat-checkbox formControlName="aceptaAutorizacion">
+            He leído y acepto las autorizaciones y declaraciones.
+        </mat-checkbox>
+
+
+        <!-- === BOTÓN ENVIAR === -->
+        <div class="actions">
+            <button mat-raised-button color="primary" type="submit" [disabled]="requestForm.invalid">
+                Enviar
+            </button>
+        </div>
+
+    </form>
+</mat-card>

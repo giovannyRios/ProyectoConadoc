@@ -1,0 +1,97 @@
+// Estilos para RegistrationFormComponent (Angular 19 + Material)
+
+.form-card {
+    margin: 1rem;
+    padding: 1rem;
+  }
+  
+  .form-grid {
+    display: grid;
+    gap: 1rem;
+  
+    h2 {
+      grid-column: 1 / -1;
+      margin-top: 2rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #333;
+    }
+  
+    // Layouts de columnas
+    .grid-1 {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+  
+    .grid-2 {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+  
+    .grid-3 {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+  
+    .grid-6 {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+  
+    // Flex para centrar elementos
+    .flex-center {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  
+    // Lista dinámica de familiares
+    .familiar-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      grid-column: 1 / -1;
+    }
+  
+    .familiar-item {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      align-items: start;
+    }
+  
+    // Texto de autorizaciones
+    .autorizaciones {
+      grid-column: 1 / -1;
+      background: #fafafa;
+      border-left: 4px solid #3f51b5;
+      padding: 1rem;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      color: #444;
+    }
+  
+    // Botones y acciones finales
+    .actions {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 2rem;
+    }
+  }
+  
+  // Responsive: todas las grids a 1 columna en pantallas pequeñas
+  @media (max-width: 600px) {
+    .form-grid {
+      .grid-2,
+      .grid-3,
+      .grid-6 {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  }
+  

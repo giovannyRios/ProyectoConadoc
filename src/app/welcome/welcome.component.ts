@@ -9,7 +9,7 @@ import { MatIconModule }    from '@angular/material/icon';
 import { MatButtonModule }  from '@angular/material/button';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-welcome',
   standalone: true,
   imports: [
     CommonModule,
@@ -19,20 +19,20 @@ import { MatButtonModule }  from '@angular/material/button';
     MatIconModule,
     MatButtonModule      // ← lo necesitabas aquí
   ],
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  templateUrl: './welcome.component.html',
+  styleUrl: './welcome.component.scss'
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class WelcomeComponent implements OnInit, OnDestroy {
   @ViewChild('videoPlayer', { static: true })
   videoPlayer!: ElementRef<HTMLVideoElement>;
-  
+
   currentSlideIndex = 0;
   private slideInterval?: any;
-  contactEmail = 'servicioalclientecoonadoc@gmail.com';
+
   slides = [
-    { type: 'image', content: '/assets/images/imagen_1.jpg' },
-    { type: 'image', content: '/assets/images/imagen_2.jpg' },
-    { type: 'image', content: '/assets/images/imagen_3.jpg' },
+    { type: 'image', content: 'assets/images/imagen_1.jpg' },
+    { type: 'image', content: 'assets/images/imagen_2.jpg' },
+    { type: 'image', content: 'assets/images/imagen_3.jpg' },
     { type: 'image', content: 'assets/images/imagen_4.jpg' },
     { type: 'image', content: 'assets/images/imagen_5.jpg' },
     { type: 'image', content: 'assets/images/imagen_6.jpg' },

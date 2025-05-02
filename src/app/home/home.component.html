@@ -1,4 +1,70 @@
-<section class="intro">
-    <p>{{ introduccion }}</p>
-</section>
-<app-benefits></app-benefits>
+<mat-sidenav-container class="container">
+  <!-- Menú hamburguesa derecho -->
+  <mat-sidenav #sidenav position="end" mode="over" class="menu">
+    <div class="menu-content">
+        <img mat-button src="assets/images/Logo-negro.png" (click)="sidenav.toggle()">
+      <mat-nav-list>
+        <a mat-list-item routerLink="/Welcome">Inicio</a>
+        <a mat-list-item routerLink="/registration-form">Registro</a>
+        <a mat-list-item routerLink="/benefits">Beneficios</a>
+      </mat-nav-list>
+    </div>
+  </mat-sidenav>
+
+  <!-- Contenido principal -->
+  <mat-sidenav-content>
+    <!-- Header con botón de menú -->
+    <header>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <img src="assets/images/icono-Color.png">
+    </header>
+
+    <!-- Slideshow -->
+    <div class="page-content">
+      <router-outlet></router-outlet>
+    </div>
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Contacto</h4>
+          <p><mat-icon inline>place</mat-icon> Cra. 16 # 30 - 63, Bogotá</p>
+          <p><mat-icon inline>phone</mat-icon> +57 601 7523313</p>
+          <p><mat-icon inline>phone</mat-icon> +57 311 5019158</p>
+          <p><mat-icon inline>email</mat-icon>  
+            <a href="mailto:{{ contactEmail }}">
+              {{ contactEmail }}
+            </a>
+          </p>
+        </div>
+
+        <!-- Sección de redes sociales -->
+        <div class="footer-section">
+          <h4>Síguenos</h4>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/COONADOC/" target="_blank" aria-label="Facebook">
+              <mat-icon fontSet="fab" fontIcon="fa-facebook"></mat-icon>
+            </a>
+            <a href="https://x.com/Coonadoc" target="_blank" aria-label="X">
+              <mat-icon fontSet="fab" fontIcon="fa-twitter"></mat-icon>
+            </a>
+            <a href="https://www.instagram.com/coopcoonadoc/" target="_blank" aria-label="Instagram">
+              <mat-icon fontSet="fab" fontIcon="fa-instagram"></mat-icon>
+            </a>
+            <a href="https://www.youtube.com/channel/UCV9denEEUEbxAt2uLwbnaDg" target="_blank" aria-label="Youtube">
+              <mat-icon fontSet="fab" fontIcon="fa-youtube"></mat-icon>
+            </a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h4>Vigilado</h4>
+          <a href="https://www.supersolidaria.gov.co/" target="_blank">
+            <img src="assets/images/LOGO-VIGILADO-SUPERSOLIDARIA.png">
+          </a>
+        </div>
+      </div>
+    </footer>
+    
+  </mat-sidenav-content>
+</mat-sidenav-container>

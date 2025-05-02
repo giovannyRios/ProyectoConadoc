@@ -1,0 +1,56 @@
+<div class="slideshow-container">
+    <div
+      *ngFor="let slide of slides; let i = index"
+      class="slide"
+      [class.active]="i === currentSlideIndex"
+    >
+      <ng-container [ngSwitch]="slide.type">
+        <img
+          *ngSwitchCase="'image'"
+          [src]="slide.content"
+          alt="Slide {{ i + 1 }}"
+        />
+      </ng-container>
+    </div>
+    <!-- Misión, Visión y Objetivos (inserta justo después de tu slideshow) -->
+  </div>
+  <div class="mv-objectives">
+
+    <!-- Misión -->
+    <section class="mission">
+      <h2>Misión</h2>
+      <p>
+        COONADOC desarrolla el modelo solidario, orientada a satisfacer necesidades y expectativas a través de servicios y beneficios de calidad, contribuyendo a la calidad de vida de sus asociados y familias.
+      </p>
+    </section>
+  
+    <!-- Visión -->
+    <section class="vision">
+      <h2>Visión</h2>
+      <p>
+        COONADOC para el año 2029 incrementará su base social en más de 1.000 asociados, a través de la gestión social, el empoderamiento de los valores corporativos de eficiencia, eficacia y calidez y la prestación de servicios generando transformación de vida, con las políticas del buen-vivir y el bienestar, siguiendo los principios del cooperativismo.
+      </p>
+    </section>
+  
+    <!-- Objetivos Estratégicos -->
+    <section class="objectives">
+      <h2>Objetivos Estratégicos</h2>
+      <ul>
+        <li>Crecer institucionalmente para obtener beneficios financieros y sociales que fortalezcan los principios cooperativos.</li>
+        <li>Crecimiento de más de 1.000 asociados al 2029.</li>
+        <li>Sostener la base social a través de estrategias de colocación.</li>
+        <li>Colocar cartera con un incremento anual del 5%.</li>
+        <li>Realizar plan de educación cooperativa cumpliendo el quinto principio.</li>
+        <li>Tener convenio con Fensecoop u otra entidad para educación cooperativa al 100% de los asociados.</li>
+        <li>Cualificar procesos según la normatividad vigente.</li>
+        <li>Cumplir y seguir las normas y leyes exigidas por los diferentes entes de control.</li>
+        <li>Cumplir con el principio de integración cooperativa (sexto principio).</li>
+        <li>Establecer relaciones al 100% con la federación y sus afiliadas.</li>
+        <li>Mejorar la proyección social de la cooperativa.</li>
+        <li>Tener un proyecto sostenible con apropiación anual.</li>
+        <li>Desarrollar el plan de acción del comité de bienestar.</li>
+        <li>Brindar a los asociados actividades de calidad que mejoren su calidad de vida y la de sus familias.</li>
+      </ul>
+    </section>
+  
+  </div>
