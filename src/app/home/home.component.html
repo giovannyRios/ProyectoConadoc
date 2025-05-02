@@ -11,6 +11,10 @@
     </div>
   </mat-sidenav>
 
+  <section class="intro">
+    <p>{{ introduccion }}</p>
+  </section>
+
   <!-- Contenido principal -->
   <mat-sidenav-content>
     <!-- Header con botón de menú -->
@@ -43,23 +47,27 @@
         <div class="footer-section">
           <h4>Síguenos</h4>
           <div class="social-icons">
-            <a href="https://www.facebook.com/COONADOC/" target="_blank" aria-label="Facebook">
+            <a href="https://www.facebook.com/COONADOC/" target="_blank" aria-label="Facebook" rel="noopener">
               <mat-icon fontSet="fab" fontIcon="fa-facebook"></mat-icon>
             </a>
-            <a href="https://x.com/Coonadoc" target="_blank" aria-label="X">
+            <a href="https://x.com/Coonadoc" target="_blank" aria-label="X" rel="noopener">
               <mat-icon fontSet="fab" fontIcon="fa-twitter"></mat-icon>
             </a>
-            <a href="https://www.instagram.com/coopcoonadoc/" target="_blank" aria-label="Instagram">
+            <a href="https://www.instagram.com/coopcoonadoc/" target="_blank" aria-label="Instagram" rel="noopener">
               <mat-icon fontSet="fab" fontIcon="fa-instagram"></mat-icon>
             </a>
-            <a href="https://www.youtube.com/channel/UCV9denEEUEbxAt2uLwbnaDg" target="_blank" aria-label="Youtube">
+            <a href="https://www.youtube.com/channel/UCV9denEEUEbxAt2uLwbnaDg" target="_blank" aria-label="Youtube" rel="noopener">
               <mat-icon fontSet="fab" fontIcon="fa-youtube"></mat-icon>
+            </a>
+            <!-- Icono de WhatsApp añadido -->
+            <a href="https://wa.me/573115019158" target="_blank" aria-label="WhatsApp" rel="noopener">
+              <mat-icon fontSet="fab" fontIcon="fa-whatsapp"></mat-icon>
             </a>
           </div>
         </div>
         <div class="footer-section">
           <h4>Vigilado</h4>
-          <a href="https://www.supersolidaria.gov.co/" target="_blank">
+          <a href="https://www.supersolidaria.gov.co/" target="_blank" rel="noopener">
             <img src="assets/images/LOGO-VIGILADO-SUPERSOLIDARIA.png">
           </a>
         </div>
