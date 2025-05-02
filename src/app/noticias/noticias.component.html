@@ -1,0 +1,11 @@
+<section class="noticias">
+    <h2>Noticias Recientes</h2>
+    <div class="cards">
+      <div class="card" *ngFor="let n of recientes">
+        <h3>{{ n.titulo }}</h3>
+        <small>{{ n.fecha | date:'longDate' }}</small>
+        <p>{{ n.resumen }}</p>
+        <a [routerLink]="['/noticias', n.id]">Ver detalle →</a>
+</div>
+    </div>
+</section>
