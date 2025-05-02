@@ -1,1 +1,77 @@
-<p>docs-formats works!</p>
+<div class="docs-formats-container">
+  <h1>Módulo Documentación y Formatos</h1>
+  
+  <!-- US-DF-01 - Listado de formatos filtrable -->
+  <div class="filters-section">
+    <div class="search-container">
+      <input
+         type="text"
+         [formControl]="searchControl"
+         placeholder="Buscar formato..."
+         class="search-input"
+      >
+    </div>
+    
+    <div class="category-filters">
+      <span>Filtrar por categoría:</span>
+      <div class="category-buttons">
+        <button
+           *ngFor="let category of categories"
+          [class.active]="selectedCategory === category"
+          (click)="onCategoryChange(category)"
+        >
+          {{ category }}
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Desktop view: Table format -->
+  <div class="formats-table-container" *ngIf="!isMobileView">
+    <table class="formats-table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Categoría</th>
+          <th>Descripción</th>
+          <th>Descargas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let format of filteredFormats">
+          <td>{{ format.name }}</td>
+          <td>{{ format.category }}</td>
+          <td>{{ format.description }}</td>
+          <td class="download-buttons">
+            <!-- US-DF-02 - Descarga en PDF -->
+            <button class="btn-pdf" (click)="downloadPdf(format)">PDF</button>
+            
+            <!-- US-DF-03 - Descarga en Word -->
+            <button class="btn-docx" (click)="downloadDocx(format)">DOCX</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <div *ngIf="filteredFormats.length === 0" class="no-results">
+      No se encontraron formatos con los criterios seleccionados.
+    </div>
+  </div>
+  
+  <!-- US-DF-04 - Vista móvil: Card format for screens under 600px -->
+  <div class="formats-cards-container" *ngIf="isMobileView">
+    <div class="format-card" *ngFor="let format of filteredFormats">
+      <h3>{{ format.name }}</h3>
+      <div class="format-category">{{ format.category }}</div>
+      <p class="format-description">{{ format.description }}</p>
+      <div class="card-download-buttons">
+        <button class="btn-pdf" (click)="downloadPdf(format)">PDF</button>
+        <button class="btn-docx" (click)="downloadDocx(format)">DOCX</button>
+      </div>
+    </div>
+    
+    <div *ngIf="filteredFormats.length === 0" class="no-results">
+      No se encontraron formatos con los criterios seleccionados.
+    </div>
+  </div>
+</div>
