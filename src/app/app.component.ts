@@ -19,7 +19,8 @@ export class AppComponent {
     // 'fas' para solids (fa-solid)
     this.iconRegistry.registerFontClassAlias('fas', 'fa-solid');
     // 'far' para regular  (fa-regular)
-    this.iconRegistry.registerFontClassAlias('far', 'fa-regular');
+    this.iconRegistry.registerFontClassAlias('far', 'fa-regular');//
   }
   title = 'Portal_Conadoc';
 }
+//para que funciones el codigo necesitampos crear un archivo o un ts app componente.ts 
