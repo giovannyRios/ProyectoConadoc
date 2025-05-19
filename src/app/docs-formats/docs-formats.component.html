@@ -1,1 +1,94 @@
-<p>docs-formats works!</p>
+<div class="docs-formats-container">
+  <h2>Documentación y Formatos</h2>
+  
+  <div class="filtros">
+    <div class="busqueda">
+      <input 
+        type="text" 
+        [(ngModel)]="busqueda" 
+        (input)="filtrarFormatos()" 
+        placeholder="Buscar formato..."
+        class="input-busqueda">
+    </div>
+    
+    <div class="filtro-categoria">
+      <label for="categoria">Categoría:</label>
+      <select 
+        id="categoria" 
+        [(ngModel)]="categoriaSeleccionada" 
+        (change)="filtrarFormatos()"
+        class="select-categoria">
+        <option value="Todas">Todas</option>
+        <option *ngFor="let categoria of categorias" [value]="categoria">
+          {{ categoria }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Vista para dispositivos no móviles (tabla) -->
+  <div *ngIf="!isMobile()" class="tabla-container">
+    <table class="tabla-formatos">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Categoría</th>
+          <th>Descripción</th>
+          <th>Actualización</th>
+          <th>Descargas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let formato of formatosFiltrados">
+          <td>{{ formato.nombre }}</td>
+          <td>{{ formato.categoria }}</td>
+          <td>{{ formato.descripcion }}</td>
+          <td>{{ formato.fechaActualizacion | date:'dd/MM/yyyy' }}</td>
+          <td class="acciones">
+            <button 
+              class="btn-pdf" 
+              (click)="descargarPDF(formato.pdfUrl, formato.nombre)">
+              PDF
+            </button>
+            <button 
+              class="btn-docx" 
+              (click)="descargarDOCX(formato.docxUrl, formato.nombre)">
+              DOCX
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Vista para dispositivos móviles (tarjetas) -->
+  <div *ngIf="isMobile()" class="tarjetas-container">
+    <div *ngFor="let formato of formatosFiltrados" class="tarjeta">
+      <div class="tarjeta-header">
+        <h3>{{ formato.nombre }}</h3>
+        <span class="categoria-badge">{{ formato.categoria }}</span>
+      </div>
+      <div class="tarjeta-body">
+        <p>{{ formato.descripcion }}</p>
+        <p class="fecha">Actualizado: {{ formato.fechaActualizacion | date:'dd/MM/yyyy' }}</p>
+      </div>
+      <div class="tarjeta-footer">
+        <button 
+          class="btn-pdf" 
+          (click)="descargarPDF(formato.pdfUrl, formato.nombre)">
+          PDF
+        </button>
+        <button 
+          class="btn-docx" 
+          (click)="descargarDOCX(formato.docxUrl, formato.nombre)">
+          DOCX
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mensaje cuando no hay resultados -->
+  <div *ngIf="formatosFiltrados.length === 0" class="sin-resultados">
+    No se encontraron formatos que coincidan con tu búsqueda.
+  </div>
+</div>
